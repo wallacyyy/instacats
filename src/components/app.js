@@ -22,8 +22,7 @@ export default class App extends React.Component {
     return(
       <div>
         <center>
-          <h1>Instacats =^.^=</h1>
-          <br/><br/>
+          <img src='/assets/cat.png' />
           <img src={this.state.cat} />
         </center>
       </div>
