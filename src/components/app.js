@@ -22,7 +22,9 @@ export default class App extends React.Component {
     return(
       <div>
         <center>
-          <img src='/assets/cat.png' />
+          <div id="logo">
+            <img src='/assets/cat.png' />
+          </div>
           <img src={this.state.cat} />
         </center>
       </div>
