@@ -19,10 +19,15 @@ export default class App extends React.Component {
   }
 
   render() {
+    let style = {
+      marginLeft: '35px',
+      marginBottom: '30px'
+    }
+
     return(
       <div>
         <center>
-          <div id="logo">
+          <div style={style} >
             <img src='/assets/cat.png' />
           </div>
           <img src={this.state.cat} />
