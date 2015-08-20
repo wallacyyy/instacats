@@ -14,17 +14,15 @@ let io = socketio(server);
 
 dotenv.load();
 
-io.on('connection', (socket) => {
-  Instagram.set('client_id', process.env.CLIENT_ID);
-  Instagram.set('client_secret', process.env.CLIENT_SECRET);
+Instagram.set('client_id', process.env.CLIENT_ID);
+Instagram.set('client_secret', process.env.CLIENT_SECRET);
 
-  Instagram.tags.subscribe({
-    object: 'tag',
-    object_id: 'catsofinstagram',
-    aspect: 'media',
-    callback_url: process.env.CALLBACK_URL,
-    type: 'subscription'
-  });
+Instagram.tags.subscribe({
+  object: 'tag',
+  object_id: 'catsofinstagram',
+  aspect: 'media',
+  callback_url: process.env.CALLBACK_URL,
+  type: 'subscription'
 });
 
 app.use(express.static(static_path));
