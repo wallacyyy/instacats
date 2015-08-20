@@ -39,6 +39,7 @@ app.get('/gimmecats', (req, res) => {
 });
 
 app.post('/gimmecats', (req, res) => {
+  res.send();
   Instagram.tags.recent({
     name: req.body[0].object_id,
     complete: (data) => {
