@@ -28,7 +28,7 @@ export default class App extends React.Component {
     if (this.state.cat) {
       content = <img src={this.state.cat} />;
     } else {
-      content = "Waiting in the Instagram api queue ... You catta be kitten me, purr.";
+      content = "Waiting Instagram ... You catta be kitten me, purr.";
     }
 
     return(
