@@ -3,9 +3,10 @@ import browserify from 'browserify'
 import reactify from 'reactify'
 import source from 'vinyl-source-stream'
 import babelify from 'babelify'
+import uglify from 'gulp-uglify'
 
 gulp.task('browserify', () => {
-  browserify('./src/main.js')
+  return browserify('./src/main.js')
     .transform(babelify)
     .transform(reactify)
     .bundle()
@@ -22,4 +23,10 @@ gulp.task('default',['browserify', 'copy'], () => {
   return gulp.watch('src/**/*.*', ['browserify', 'copy'])
 });
 
-gulp.task('deploy',['browserify', 'copy']);
+gulp.task('compress', ['browserify'], () => {
+  return gulp.src('dist/js/main.js')
+    .pipe(uglify())
+    .pipe(gulp.dest('dist/js'));
+});
+
+gulp.task('deploy', ['copy', 'browserify', 'compress']);
