@@ -19,16 +19,12 @@ export default class App extends React.Component {
   }
 
   render() {
-    let content;
+    let content, message = "Waiting Instagram ... You catta be kitten me, purr.";
+    this.state.cat ? content = <img src={this.state.cat} /> : content = message;
+
     let style = {
       marginLeft: '35px',
       marginBottom: '30px'
-    }
-
-    if (this.state.cat) {
-      content = <img src={this.state.cat} />;
-    } else {
-      content = "Waiting Instagram ... You catta be kitten me, purr.";
     }
 
     return(
