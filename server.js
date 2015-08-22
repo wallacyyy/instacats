@@ -6,7 +6,6 @@ import Instagram from 'instagram-node-lib'
 import dotenv from 'dotenv'
 
 let port = process.env.PORT || 8080;
-let host = process.env.SOCKET_URL || `http://localhost:${port}`;
 let static_path = './dist';
 let app = express();
 let server = http.Server(app);
