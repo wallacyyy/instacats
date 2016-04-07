@@ -1,8 +1,7 @@
 {
   "name": "instacats",
   "version": "1.0.0",
-  "description": "An real time Instagram for cats !",
-  "main": "gulpfile.js",
+  "description": "Real time Instagram for cats",
   "engines": {
     "node": "5.7.0"
   },
