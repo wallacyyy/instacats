@@ -26,7 +26,7 @@ export default class App extends React.Component {
     const message = 'Waiting Instagram ... You catta be kitten me, purr.'
     let { content, cat } = this.state
 
-    cat ? content = <img src={this.state.cat} height={50%} width={50%} /> : content = message
+    cat ? content = <img src={this.state.cat} /> : content = message
 
     const style = {
       marginLeft: '35px',

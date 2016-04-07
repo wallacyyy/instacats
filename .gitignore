@@ -56,6 +56,3 @@ node_modules
 
 #dotenv
 .env
-
-# gulp
-dist

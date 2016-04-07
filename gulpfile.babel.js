@@ -29,4 +29,4 @@ gulp.task('compress', ['browserify'], () => {
     .pipe(gulp.dest('dist/js'))
 })
 
-gulp.task('deploy', ['copy', 'browserify', 'compress'])
+gulp.task('build', ['copy', 'browserify', 'compress'])
