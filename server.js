@@ -1,20 +1,21 @@
-import express from 'express'
-import http from 'http'
-import socketio from 'socket.io'
-import bodyParser from 'body-parser'
-import Instagram from 'instagram-node-lib'
-import dotenv from 'dotenv'
+const express = require('express')
+const http = require('http')
+const socketio = require('socket.io')
+const bodyParser = require('body-parser')
+const Instagram = require('instagram-node-lib')
 
-let port = process.env.PORT || 8080;
-let static_path = './dist';
-let app = express();
-let server = http.Server(app);
-let io = socketio(server);
+const port = process.env.PORT || 8080
+const static_path = './dist'
+const app = express()
+const server = http.Server(app)
+const io = socketio(server)
 
-dotenv.load();
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').load()
+}
 
-Instagram.set('client_id', process.env.CLIENT_ID);
-Instagram.set('client_secret', process.env.CLIENT_SECRET);
+Instagram.set('client_id', process.env.CLIENT_ID)
+Instagram.set('client_secret', process.env.CLIENT_SECRET)
 
 Instagram.tags.subscribe({
   object: 'tag',
@@ -22,30 +23,30 @@ Instagram.tags.subscribe({
   aspect: 'media',
   callback_url: process.env.CALLBACK_URL,
   type: 'subscription'
-});
+})
 
-app.use(express.static(static_path));
-app.use(bodyParser.json());
+app.use(express.static(static_path))
+app.use(bodyParser.json())
 
-app.get('/', (req, res) => {
+app.get('/', function (req, res) {
   res.sendFile('index.html', {
     root: static_path
   })
-});
+})
 
-app.get('/gimmecats', (req, res) => {
-  Instagram.subscriptions.handshake(req, res);
-});
+app.get('/gimmecats', function (req, res) {
+  Instagram.subscriptions.handshake(req, res)
+})
 
-app.post('/gimmecats', (req, res) => {
-  res.send();
+app.post('/gimmecats', function (req, res) {
+  res.send()
   Instagram.tags.recent({
     name: req.body[0].object_id,
     complete: (data) => {
-      io.sockets.emit('cats', { cat: data } );
+      io.sockets.emit('cats', { cat: data })
     }
-  });
-});
+  })
+})
 
-server.listen(port);
-console.log('Listening ...');
+server.listen(port)
+console.log('Listening ...')
