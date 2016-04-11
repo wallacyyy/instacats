@@ -25,7 +25,8 @@
     "reactify": "^1.1.1"
   },
   "scripts": {
-    "build": "gulp build",
+    "gulp:build": "node node_modules/gulp/bin/gulp build",
+    "gulp": "node node_modules/gulp/bin/gulp",
     "start": "node server.js"
   },
   "author": "Leonardo Couto",
